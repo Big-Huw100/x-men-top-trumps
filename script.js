@@ -10,6 +10,23 @@ class Card {
         (this.energyProjection = energyProjection),
         (this.fightingSkills = fightingSkills)
     }
+
+    getCard() {
+        const getCard = `
+        <article class ="x-men-card">
+        <h2>${this.name}</h2>
+            <img src=${this.img} />
+            <p>${this.quote}</p>
+            <button value="${this.intelligence}">Intelligence</button>
+            <button value="${this.strength}">Strength</button>
+            <button value="${this.speed}">Speed</button>
+            <button value="${this.durability}">Durability</button>
+            <button value="${this.energyProjection}">Energy Projection</button>
+            <button value="${this.fightingSkills}">Fighting Skills</button>
+        </article>
+        `;
+        return getCard;
+    }
 };
 
 const proteus = new Card("Proteus", "https://static.wikia.nocookie.net/marveldatabase/images/3/36/Kevin_MacTaggert_%28Earth-616%29_from_X-Men_Hellfire_Gala_Vol_1_1_001.jpg/revision/latest/scale-to-width-down/350?cb=20220730221736","Everything is out there. Everything is real-- But nothing is, either. I think of it like this. I don't think of real the way you do, Errol. To me, the distinction is between what I've brought forward and what I haven't.", 4, 2, 3, 7, 7, 2);
@@ -28,7 +45,7 @@ const apocalypse = new Card("Apocalypse", "https://static.wikia.nocookie.net/mar
 
 const cassandraNova = new Card("Cassandra Nova", "https://static.wikia.nocookie.net/marveldatabase/images/3/39/Cassandra_Nova_Xavier_%28Earth-616%29_from_Marauders_Vol_2_1_001.jpg/revision/latest/scale-to-width-down/325?cb=20220406202432", " People must learn to hate. I'm going to be their teacher.", 3, 1, 2, 4, 5, 1);
 
-const juggernaut = new Card("Juggernaut", "https://static.wikia.nocookie.net/marveldatabase/images/6/65/Juggernaut_Vol_3_3_Textless.jpg/revision/latest/scale-to-width-down/344?cb=20210519193740", "I'm the Juggernaut! Ain't nothin' -- ain't nobody -- can beat me!", 2, 7, 2, 7, 1, 4);
+const juggernaut = new Card("Juggernaut", "https://i.pinimg.com/originals/74/0d/ac/740dac5af280fd01ed3363d81bac3832.jpg", "I'm the Juggernaut! Ain't nothin' -- ain't nobody -- can beat me!", 2, 7, 2, 7, 1, 4);
 
 const onslaught = new Card("Onslaught", "https://static.wikia.nocookie.net/marveldatabase/images/f/fb/Onslaught_%28Psychic_Entity%29_%28Earth-616%29_from_Marvel_Masterpieces_%28Trading_Cards%29_1996_Set_001.jpg/revision/latest/scale-to-width-down/324?cb=20051218191341", "At last... FREEDOM! Now behold my mighty hand!", 6, 7, 3, 7, 6, 4);
 
@@ -67,3 +84,7 @@ const bishop = new Card("Bishop", "https://static.wikia.nocookie.net/marveldatab
 const iceman = new Card("Iceman", "https://static.wikia.nocookie.net/marveldatabase/images/3/3a/X-Men_Vol_6_13_Trading_Card_Variant_Textless.jpg/revision/latest/scale-to-width-down/329?cb=20220726054440", "I've been a super hero since before I was old enough to shave. I've stood side by side with the toughest, most powerful heroes in the known universe and always held my own.", 2, 3, 3, 4, 5, 4);
 
 const jeanGrey = new Card("Jean Grey", "https://static.wikia.nocookie.net/marveldatabase/images/4/4d/A.X.E._Judgment_Day_Vol_1_3_Women_of_A.X.E._Variant_Textless.jpg/revision/latest/scale-to-width-down/323?cb=20220711112817", "We come into this world alone and we leave the same way. The time we spent in between - time spent alive, sharing, learning together... is all that makes life worth living.", 3, 2, 3, 2, 6, 4);
+
+const xmenCardContainer = document.querySelector(".x-men-card-container");
+
+xmenCardContainer.innerHTML += juggernaut.getCard();
