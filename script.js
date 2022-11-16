@@ -14,34 +14,38 @@ class Card {
     getCard() {
         const getCard = `
         <article class ="x-men-card">
-        <h2>${this.name}</h2>
-            <img src=${this.img} />
-            <p>${this.quote}</p>
-            <button value="${this.intelligence}">Intelligence</button>
-            <button value="${this.strength}">Strength</button>
-            <button value="${this.speed}">Speed</button>
-            <button value="${this.durability}">Durability</button>
-            <button value="${this.energyProjection}">Energy Projection</button>
-            <button value="${this.fightingSkills}">Fighting Skills</button>
+            <h2 class ="x-men-card__name">${this.name}</h2>
+            <img class="x-men-card__img" src=${this.img} />
+            <p class="x-men-card__quote">${this.quote}</p>
+            <div class="x-men-card__button-container">
+                <button class="x-men-card__button" value="${this.intelligence}">Intelligence</button>
+                <button class="x-men-card__button" value="${this.strength}">Strength</button>
+                <button class="x-men-card__button" value="${this.speed}">Speed</button>
+                <button class="x-men-card__button" value="${this.durability}">Durability</button>
+                <button class="x-men-card__button" value="${this.energyProjection}">Energy Projection</button>
+                <button class="x-men-card__button" value="${this.fightingSkills}">Fighting Skills</button></div>
+            </div>
         </article>
         `;
         return getCard;
     }
 };
 
-const proteus = new Card("Proteus", "https://static.wikia.nocookie.net/marveldatabase/images/3/36/Kevin_MacTaggert_%28Earth-616%29_from_X-Men_Hellfire_Gala_Vol_1_1_001.jpg/revision/latest/scale-to-width-down/350?cb=20220730221736","Everything is out there. Everything is real-- But nothing is, either. I think of it like this. I don't think of real the way you do, Errol. To me, the distinction is between what I've brought forward and what I haven't.", 4, 2, 3, 7, 7, 2);
+const xmenCardContainer = document.querySelector(".x-men-card-container");
 
-const sabretooth = new Card("Sabretooth", "https://static.wikia.nocookie.net/marveldatabase/images/8/85/Sabretooth_Vol_4_1_Textless.jpg/revision/latest/scale-to-width-down/329?cb=20210917003526", "I've been ready to die since before you was born!", 2, 3, 2, 4, 1, 6);
+const proteus = new Card("Proteus", "https://upload.wikimedia.org/wikipedia/en/0/0e/Proteus_%28Marvel_Comics_character%29.png","Everything is out there. Everything is real-- But nothing is, either.", 4, 2, 3, 7, 7, 2);
 
-const colossus = new Card("Colossus", "https://static.wikia.nocookie.net/marveldatabase/images/b/b1/X-Men_Vol_5_12_Unknown_Comic_Books_Exclusive_Ngu_Virgin_Variant.jpg/revision/latest/scale-to-width-down/329?cb=20200917030432", "I am not made of steel. Rage. I... am made... of RAGE!", 2, 6, 2, 6, 1, 4);
+const sabretooth = new Card("Sabretooth", "https://upload.wikimedia.org/wikipedia/en/7/7f/Sabretooth_%28Victor_Creed%29.jpg", "I've been ready to die since before you was born!", 2, 3, 2, 4, 1, 6);
 
-const gambit = new Card("Gambit", "https://static.wikia.nocookie.net/marveldatabase/images/0/06/Remy_LeBeau_%28Earth-616%29_from_Knights_of_X_Vol_1_3_cover.jpg/revision/latest/scale-to-width-down/350?cb=20220921211846", "The gentleman assumes the pot is his to win... but I have a literal ace up my sleeve.", 2, 2, 2, 2, 2, 4);
+const colossus = new Card("Colossus", "https://upload.wikimedia.org/wikipedia/en/2/26/Colossus-AvX_Consequences.jpg", "I am not made of steel. Rage. I... am made... of RAGE!", 2, 6, 2, 6, 1, 4);
 
-const cyclops = new Card("Cyclops", "https://static.wikia.nocookie.net/marveldatabase/images/d/d3/X-Men_Vol_6_1_New_Line-Up_Trading_Card_Variant_Textless.jpg/revision/latest/scale-to-width-down/329?cb=20210911084138", "So what's my story? I'm a dreamer. I'm an X-Man.", 3, 2, 2, 2, 5, 4);
+const gambit = new Card("Gambit", "https://upload.wikimedia.org/wikipedia/en/thumb/9/94/Gambit_%28Marvel_Comics%29.png/220px-Gambit_%28Marvel_Comics%29.png", "The gentleman assumes the pot is his to win...", 2, 2, 2, 2, 2, 4);
 
-const phoenixForce = new Card("Phoenix Force", "https://static.wikia.nocookie.net/marveldatabase/images/e/ee/Phoenix_Force_%28Earth-616%29_from_Avengers_Vol_8_32_001.jpg/revision/latest/scale-to-width-down/325?cb=20210406171416", "I am fire! And life incarnate! Now and forever -- I am PHOENIX!", 7, 7, 7, 7, 7, 1);
+const cyclops = new Card("Cyclops", "https://i.pinimg.com/736x/b6/1c/f1/b61cf1a90d6ca39bc89cb43d86cc50df.jpg", "So what's my story? I'm a dreamer. I'm an X-Man.", 3, 2, 2, 2, 5, 4);
 
-const apocalypse = new Card("Apocalypse", "https://static.wikia.nocookie.net/marveldatabase/images/1/1e/X-Men_Vol_5_13_Asrar_Variant_Textless.jpg/revision/latest/scale-to-width-down/329?cb=20200830164616", "Peace does nothing to test -- to increase -- mutants' strength. To force them to evolve into the strong.", 6, 7, 5, 6, 6, 3);
+const phoenixForce = new Card("Phoenix Force", "https://comicvine.gamespot.com/a/uploads/scale_medium/1/10812/2363684-phoenixdone.jpg", "I am fire! And life incarnate! Now and forever -- I am PHOENIX!", 7, 7, 7, 7, 7, 1);
+
+const apocalypse = new Card("Apocalypse", "https://static.wikia.nocookie.net/marveldatabase/images/1/1e/X-Men_Vol_5_13_Asrar_Variant_Textless.jpg/revision/latest/scale-to-width-down/329?cb=20200830164616", "Peace does nothing to test -- to increase -- mutants' strength.", 6, 7, 5, 6, 6, 3);
 
 const cassandraNova = new Card("Cassandra Nova", "https://static.wikia.nocookie.net/marveldatabase/images/3/39/Cassandra_Nova_Xavier_%28Earth-616%29_from_Marauders_Vol_2_1_001.jpg/revision/latest/scale-to-width-down/325?cb=20220406202432", " People must learn to hate. I'm going to be their teacher.", 3, 1, 2, 4, 5, 1);
 
@@ -79,12 +83,11 @@ const charlesXavier = new Card("Charles Xavier", "https://static.wikia.nocookie.
 
 const emmaFrost = new Card("Emma Frost", "https://static.wikia.nocookie.net/marveldatabase/images/7/74/Marvel_Comics_Vol_1_1000_Artgerm_Collectibles_Exclusive_Emma_Frost_Virgin_Variant.jpg/revision/latest/scale-to-width-down/329?cb=20211002082122", "One more time, then. For the children.", 4, 4, 2, 5, 5, 3);
 
-const bishop = new Card("Bishop", "https://static.wikia.nocookie.net/marveldatabase/images/8/8b/Lucas_Bishop_%28Earth-1191%29_from_Marauders_Vol_1_19_cover_001.jpg/revision/latest/scale-to-width-down/343?cb=20210123231429", "I'm a mutant, too. And I know what it's like to be alone in a strange land.", 2, 3, 7, 3, 4, 4);
+const bishop = new Card("Bishop", "https://external-preview.redd.it/bXK5Hu0-hGaAVzm7w7fPgdsQ9rua1OMZCeUju1U9oEY.jpg?auto=webp&s=1c5577efd17bbe0d851313cd797521586210bd74", "I'm a mutant, too. And I know what it's like to be alone in a strange land.", 2, 3, 7, 3, 4, 4);
 
 const iceman = new Card("Iceman", "https://static.wikia.nocookie.net/marveldatabase/images/3/3a/X-Men_Vol_6_13_Trading_Card_Variant_Textless.jpg/revision/latest/scale-to-width-down/329?cb=20220726054440", "I've been a super hero since before I was old enough to shave. I've stood side by side with the toughest, most powerful heroes in the known universe and always held my own.", 2, 3, 3, 4, 5, 4);
 
 const jeanGrey = new Card("Jean Grey", "https://static.wikia.nocookie.net/marveldatabase/images/4/4d/A.X.E._Judgment_Day_Vol_1_3_Women_of_A.X.E._Variant_Textless.jpg/revision/latest/scale-to-width-down/323?cb=20220711112817", "We come into this world alone and we leave the same way. The time we spent in between - time spent alive, sharing, learning together... is all that makes life worth living.", 3, 2, 3, 2, 6, 4);
 
-const xmenCardContainer = document.querySelector(".x-men-card-container");
-
-xmenCardContainer.innerHTML += juggernaut.getCard();
+xmenCardContainer.innerHTML += apocalypse.getCard();
+xmenCardContainer.innerHTML += cassandraNova.getCard();

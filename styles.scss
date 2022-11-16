@@ -1,0 +1,84 @@
+$font-body: "Helvetica";
+
+$color-primary: #1D90F3;
+$color-secondary: #FFFE03;
+$color-tertiary: #F94115;
+$color-quaternary: #0E1113;
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: $font-body;
+}
+
+header {
+    background-color: $color-primary;
+    color: $color-secondary;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.x-men-card-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.x-men-card {
+    background-color: $color-primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 20vw;
+    height: 85vh;
+    border: $color-quaternary solid 5px;
+    border-radius: 10px;
+
+    &__name {
+        color: $color-secondary;
+        margin-bottom: 10px;
+    }
+
+    &__img {
+        height: 60%;
+        width: 80%;
+        border: $color-quaternary solid 3px;
+        border-radius: 10px;
+    }
+
+    &__quote {
+        text-align: center;
+        padding: 10px;
+        font-size: 11px;
+        background-color: $color-secondary;
+        color: $color-quaternary;
+        height: 10%;
+        width: 80%;
+        margin-top: 5px;
+        border: $color-quaternary solid 3px;
+        border-radius: 10px;
+    }
+
+    &__button-container {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        gap: 2px;
+        margin: 10px 10px 0 10px;
+    }
+
+    &__button {
+        height: 40px;
+        width: auto;
+        background-color: $color-tertiary;
+	    border: $color-quaternary solid 2px;
+	    cursor: pointer;
+        padding: 2px;
+        font-size: 12px;
+    }
+}
