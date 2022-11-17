@@ -16,19 +16,29 @@ function () {
   }
 
   _createClass(Card, [{
-    key: "getCard",
-    value: function getCard() {
-      var getCard = "\n        <article class =\"x-men-card\">\n            <h2 class =\"x-men-card__name\">".concat(this.name, "</h2>\n            <img class=\"x-men-card__img\" src=").concat(this.img, " />\n            <p class=\"x-men-card__quote\">").concat(this.quote, "</p>\n            <div class=\"x-men-card__button-container\">\n                <button class=\"x-men-card__button\" value=\"").concat(this.intelligence, "\">Intelligence</button>\n                <button class=\"x-men-card__button\" value=\"").concat(this.strength, "\">Strength</button>\n                <button class=\"x-men-card__button\" value=\"").concat(this.speed, "\">Speed</button>\n                <button class=\"x-men-card__button\" value=\"").concat(this.durability, "\">Durability</button>\n                <button class=\"x-men-card__button\" value=\"").concat(this.energyProjection, "\">Energy Projection</button>\n                <button class=\"x-men-card__button\" value=\"").concat(this.fightingSkills, "\">Fighting Skills</button></div>\n            </div>\n        </article>\n        ");
-      return getCard;
+    key: "getPlayerCard",
+    value: function getPlayerCard() {
+      var getPlayerCard = "\n        <article class =\"x-men-card\">\n            <h2 class =\"x-men-card__name\">".concat(this.name, "</h2>\n            <img class=\"x-men-card__img\" src=").concat(this.img, " />\n            <p class=\"x-men-card__quote\">").concat(this.quote, "</p>\n            <div class=\"x-men-card__button-container\">\n                <button class=\"x-men-player-card__button\">Intelligence</button>\n                <button class=\"x-men-player-card__button\">Strength</button>\n                <button class=\"x-men-player-card__button\">Speed</button>\n                <button class=\"x-men-player-card__button\">Durability</button>\n                <button class=\"x-men-player-card__button\">Energy Projection</button>\n                <button class=\"x-men-player-card__button\">Fighting Skills</button></div>\n            </div>\n        </article>\n        ");
+      return getPlayerCard;
+    }
+  }, {
+    key: "getCpuCard",
+    value: function getCpuCard() {
+      var getCpuCard = "\n        <article class =\"x-men-card\">\n            <h2 class =\"x-men-card__name\">".concat(this.name, "</h2>\n            <img class=\"x-men-card__img\" src=").concat(this.img, " />\n            <p class=\"x-men-card__quote\">").concat(this.quote, "</p>\n            <div class=\"x-men-card__button-container\">\n                <button class=\"x-men-card__button\">Intelligence</button>\n                <button class=\"x-men-card__button\">Strength</button>\n                <button class=\"x-men-card__button\">Speed</button>\n                <button class=\"x-men-card__button\">Durability</button>\n                <button class=\"x-men-card__button\">Energy Projection</button>\n                <button class=\"x-men-card__button\">Fighting Skills</button></div>\n            </div>\n        </article>\n        ");
+      return getCpuCard;
     }
   }]);
 
   return Card;
 }();
 
-;
-var xmenCardContainer = document.querySelector(".x-men-card-container");
+; // ----------------------------------ELEMENTS-----------------------------------------
+
+var xmenPlayerCardContainer = document.querySelector(".x-men-player-card-container");
+var xmenCpuCardContainer = document.querySelector(".x-men-cpu-card-container");
 var startButton = document.querySelector(".start-screen__button");
+var statButton = document.querySelectorAll(".x-men-player-card__button"); // --------------------------------CARDS---------------------------------------------
+
 var proteus = new Card("Proteus", "https://upload.wikimedia.org/wikipedia/en/0/0e/Proteus_%28Marvel_Comics_character%29.png", "Everything is out there. Everything is real-- But nothing is, either.", 4, 2, 3, 7, 7, 2);
 var sabretooth = new Card("Sabretooth", "https://upload.wikimedia.org/wikipedia/en/7/7f/Sabretooth_%28Victor_Creed%29.jpg", "I've been ready to die since before you was born!", 2, 3, 2, 4, 1, 6);
 var colossus = new Card("Colossus", "https://upload.wikimedia.org/wikipedia/en/2/26/Colossus-AvX_Consequences.jpg", "I am not made of steel. Rage. I... am made... of RAGE!", 2, 6, 2, 6, 1, 4);
@@ -76,11 +86,23 @@ deck.forEach(function (elem, index) {
   playerHand.push(elem);
 }); // Start Game button
 
-var startGame = startButton.addEventListener("click", function () {
+startButton.addEventListener("click", function () {
   // Clear the screen. Present first cards
-  xmenCardContainer.innerHTML = "";
-  xmenCardContainer.innerHTML += playerHand[0].getCard();
-  xmenCardContainer.innerHTML += cpuHand[0].getCard();
-});
-console.log(playerHand);
-console.log(cpuHand);
+  xmenPlayerCardContainer.innerHTML = "";
+  xmenPlayerCardContainer.innerHTML += playerHand[0].getPlayerCard();
+  xmenCpuCardContainer.innerHTML += cpuHand[0].getCpuCard();
+}); // GAMEPLAY!! When a button is clicked on the player's card, if the value of that button is higher than the same button on the cpu's card that card joins the player's hand, if it's lower the player's card joins the cpu's hand.
+
+var win = "win";
+var loose = "loose";
+
+if (playerHand[0].intelligence > cpuHand[0].intelligence) {
+  console.log(win);
+} else {
+  console.log(loose);
+}
+
+; // When the player or the cpu have no cards present a game over screen.
+
+console.log(playerHand[0].intelligence);
+console.log(cpuHand[0].intelligence);

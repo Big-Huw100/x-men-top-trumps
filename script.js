@@ -11,29 +11,56 @@ class Card {
         (this.fightingSkills = fightingSkills)
     }
 
-    getCard() {
-        const getCard = `
+    getPlayerCard() {
+        const getPlayerCard = `
         <article class ="x-men-card">
             <h2 class ="x-men-card__name">${this.name}</h2>
             <img class="x-men-card__img" src=${this.img} />
             <p class="x-men-card__quote">${this.quote}</p>
             <div class="x-men-card__button-container">
-                <button class="x-men-card__button" value="${this.intelligence}">Intelligence</button>
-                <button class="x-men-card__button" value="${this.strength}">Strength</button>
-                <button class="x-men-card__button" value="${this.speed}">Speed</button>
-                <button class="x-men-card__button" value="${this.durability}">Durability</button>
-                <button class="x-men-card__button" value="${this.energyProjection}">Energy Projection</button>
-                <button class="x-men-card__button" value="${this.fightingSkills}">Fighting Skills</button></div>
+                <button class="x-men-player-card__button">Intelligence</button>
+                <button class="x-men-player-card__button">Strength</button>
+                <button class="x-men-player-card__button">Speed</button>
+                <button class="x-men-player-card__button">Durability</button>
+                <button class="x-men-player-card__button">Energy Projection</button>
+                <button class="x-men-player-card__button">Fighting Skills</button></div>
             </div>
         </article>
         `;
-        return getCard;
+        return getPlayerCard;
+    }
+
+    getCpuCard() {
+        const getCpuCard = `
+        <article class ="x-men-card">
+            <h2 class ="x-men-card__name">${this.name}</h2>
+            <img class="x-men-card__img" src=${this.img} />
+            <p class="x-men-card__quote">${this.quote}</p>
+            <div class="x-men-card__button-container">
+                <button class="x-men-card__button">Intelligence</button>
+                <button class="x-men-card__button">Strength</button>
+                <button class="x-men-card__button">Speed</button>
+                <button class="x-men-card__button">Durability</button>
+                <button class="x-men-card__button">Energy Projection</button>
+                <button class="x-men-card__button">Fighting Skills</button></div>
+            </div>
+        </article>
+        `;
+        return getCpuCard;
     }
 };
 
-const xmenCardContainer = document.querySelector(".x-men-card-container");
+// ----------------------------------ELEMENTS-----------------------------------------
+
+const xmenPlayerCardContainer = document.querySelector(".x-men-player-card-container");
+
+const xmenCpuCardContainer = document.querySelector(".x-men-cpu-card-container");
 
 const startButton = document.querySelector(".start-screen__button");
+
+const statButton = document.querySelectorAll(".x-men-player-card__button");
+
+// --------------------------------CARDS---------------------------------------------
 
 const proteus = new Card("Proteus", "https://upload.wikimedia.org/wikipedia/en/0/0e/Proteus_%28Marvel_Comics_character%29.png","Everything is out there. Everything is real-- But nothing is, either.", 4, 2, 3, 7, 7, 2);
 
@@ -114,12 +141,26 @@ deck.forEach(function(elem, index){
 });
 
 // Start Game button
-const startGame = startButton.addEventListener("click", () => {
+startButton.addEventListener("click", () => {
     // Clear the screen. Present first cards
-    xmenCardContainer.innerHTML = "";
-    xmenCardContainer.innerHTML += playerHand[0].getCard();
-    xmenCardContainer.innerHTML += cpuHand[0].getCard();
+    xmenPlayerCardContainer.innerHTML = "";
+    xmenPlayerCardContainer.innerHTML += playerHand[0].getPlayerCard();
+    xmenCpuCardContainer.innerHTML += cpuHand[0].getCpuCard();
 });
 
-console.log(playerHand);
-console.log(cpuHand);
+// GAMEPLAY!! When a button is clicked on the player's card, if the value of that button is higher than the same button on the cpu's card that card joins the player's hand, if it's lower the player's card joins the cpu's hand.
+
+const win = "win"
+
+const loose = "loose"
+
+if (playerHand[0].intelligence > cpuHand[0].intelligence) {
+    console.log(win)
+} else {
+    console.log(loose)
+};
+
+// When the player or the cpu have no cards present a game over screen.
+
+console.log(playerHand[0].intelligence);
+console.log(cpuHand[0].intelligence);

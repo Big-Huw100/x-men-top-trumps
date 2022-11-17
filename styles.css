@@ -22,6 +22,7 @@ header {
   align-items: center;
   width: 70vw;
   margin-top: 20px;
+  margin-left: 100px;
   padding: 40px;
 }
 .start-screen__rules {
@@ -38,7 +39,19 @@ header {
   cursor: pointer;
 }
 
-.x-men-card-container {
+.game-board {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.x-men-player-card-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.x-men-cpu-card-container {
   display: flex;
   justify-content: space-evenly;
   margin-top: 15px;
@@ -85,6 +98,16 @@ header {
   margin: 10px 10px 0 10px;
 }
 .x-men-card__button {
+  height: 40px;
+  width: auto;
+  background-color: #F94115;
+  border: #0E1113 solid 2px;
+  cursor: pointer;
+  padding: 2px;
+  font-size: 12px;
+}
+
+.x-men-player-card__button {
   height: 40px;
   width: auto;
   background-color: #F94115;
