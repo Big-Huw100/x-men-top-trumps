@@ -28,6 +28,7 @@ function () {
 
 ;
 var xmenCardContainer = document.querySelector(".x-men-card-container");
+var startButton = document.querySelector(".start-screen__button");
 var proteus = new Card("Proteus", "https://upload.wikimedia.org/wikipedia/en/0/0e/Proteus_%28Marvel_Comics_character%29.png", "Everything is out there. Everything is real-- But nothing is, either.", 4, 2, 3, 7, 7, 2);
 var sabretooth = new Card("Sabretooth", "https://upload.wikimedia.org/wikipedia/en/7/7f/Sabretooth_%28Victor_Creed%29.jpg", "I've been ready to die since before you was born!", 2, 3, 2, 4, 1, 6);
 var colossus = new Card("Colossus", "https://upload.wikimedia.org/wikipedia/en/2/26/Colossus-AvX_Consequences.jpg", "I am not made of steel. Rage. I... am made... of RAGE!", 2, 6, 2, 6, 1, 4);
@@ -73,12 +74,13 @@ var shuffleDeck = deck.sort(function (a, b) {
 deck.forEach(function (elem, index) {
   deck.splice(index, 1);
   playerHand.push(elem);
-}); // Display first card in player and CPU hand
+}); // Start Game button
 
-xmenCardContainer.innerHTML += playerHand[0].getCard();
-xmenCardContainer.innerHTML += cpuHand[0].getCard(); // Link the above to a Start Game button
-// First we see an explanasion of the game and a Start Game button
-// Once the button is clicked it turns to the card screen
-
+var startGame = startButton.addEventListener("click", function () {
+  // Clear the screen. Present first cards
+  xmenCardContainer.innerHTML = "";
+  xmenCardContainer.innerHTML += playerHand[0].getCard();
+  xmenCardContainer.innerHTML += cpuHand[0].getCard();
+});
 console.log(playerHand);
 console.log(cpuHand);

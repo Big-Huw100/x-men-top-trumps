@@ -33,6 +33,8 @@ class Card {
 
 const xmenCardContainer = document.querySelector(".x-men-card-container");
 
+const startButton = document.querySelector(".start-screen__button");
+
 const proteus = new Card("Proteus", "https://upload.wikimedia.org/wikipedia/en/0/0e/Proteus_%28Marvel_Comics_character%29.png","Everything is out there. Everything is real-- But nothing is, either.", 4, 2, 3, 7, 7, 2);
 
 const sabretooth = new Card("Sabretooth", "https://upload.wikimedia.org/wikipedia/en/7/7f/Sabretooth_%28Victor_Creed%29.jpg", "I've been ready to die since before you was born!", 2, 3, 2, 4, 1, 6);
@@ -111,13 +113,13 @@ deck.forEach(function(elem, index){
     playerHand.push(elem);
 });
 
-// Display first card in player and CPU hand
-xmenCardContainer.innerHTML += playerHand[0].getCard();
-xmenCardContainer.innerHTML += cpuHand[0].getCard();
-
-// Link the above to a Start Game button
-// First we see an explanasion of the game and a Start Game button
-// Once the button is clicked it turns to the card screen
+// Start Game button
+const startGame = startButton.addEventListener("click", () => {
+    // Clear the screen. Present first cards
+    xmenCardContainer.innerHTML = "";
+    xmenCardContainer.innerHTML += playerHand[0].getCard();
+    xmenCardContainer.innerHTML += cpuHand[0].getCard();
+});
 
 console.log(playerHand);
 console.log(cpuHand);
