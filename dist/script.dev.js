@@ -57,4 +57,24 @@ var bishop = new Card("Bishop", "https://external-preview.redd.it/bXK5Hu0-hGaAVz
 var iceman = new Card("Iceman", "https://upload.wikimedia.org/wikipedia/en/0/03/Iceman.png", "I've been a super hero since before I was old enough to shave.", 2, 3, 3, 4, 5, 4);
 var jeanGrey = new Card("Jean Grey", "https://i.pinimg.com/736x/f8/54/fc/f854fcbef3a8b032586e89a17299e889--marvel-women-marvel-girls.jpg", "Time spent alive, learning together is all that makes life worth living.", 3, 2, 3, 2, 6, 4);
 xmenCardContainer.innerHTML += iceman.getCard();
-xmenCardContainer.innerHTML += jeanGrey.getCard();
+xmenCardContainer.innerHTML += jeanGrey.getCard(); // Work out how to deal out a hand of cards; one to the player, one to the CPU
+// Before the game starts we have a deck of cards, at the start of the game that deck is suffled and two hands are dealt; one to the player, the other to the CPU.
+// The deck needs to be randomised then each hand gets 14 cards each
+// The deck
+
+var deck = [proteus, sabretooth, colossus, gambit, cyclops, phoenixForce, apocalypse, cassandraNova, juggernaut, onslaught, storm, rogue, magneto, misterSinister, kittyPryde, beast, williamStryker, arcade, mystique, wolverine, nightcrawler, shadowKing, angel, charlesXavier, emmaFrost, bishop, iceman, jeanGrey]; // Player's hand
+
+var playerHand = []; // CPU's hand - CPU = deck so that the CPU gets the cards not dealt to the player
+
+var cpuHand = deck; // Shuffles the deck
+
+var shuffleDeck = deck.sort(function (a, b) {
+  return 0.5 - Math.random();
+}); // Deals cards to player
+
+deck.forEach(function (elem, index) {
+  deck.splice(index, 1);
+  playerHand.push(elem);
+});
+console.log(playerHand);
+console.log(cpuHand);
