@@ -55,9 +55,7 @@ var charlesXavier = new Card("Charles Xavier", "https://upload.wikimedia.org/wik
 var emmaFrost = new Card("Emma Frost", "https://subscriptions.acecomics.co.uk/wp-content/uploads/2018/07/xmenblackemmafrost.jpg", "One more time, then. For the children.", 4, 4, 2, 5, 5, 3);
 var bishop = new Card("Bishop", "https://external-preview.redd.it/bXK5Hu0-hGaAVzm7w7fPgdsQ9rua1OMZCeUju1U9oEY.jpg?auto=webp&s=1c5577efd17bbe0d851313cd797521586210bd74", "I'm a mutant, too. And I know what it's like to be alone in a strange land.", 2, 3, 7, 3, 4, 4);
 var iceman = new Card("Iceman", "https://upload.wikimedia.org/wikipedia/en/0/03/Iceman.png", "I've been a super hero since before I was old enough to shave.", 2, 3, 3, 4, 5, 4);
-var jeanGrey = new Card("Jean Grey", "https://i.pinimg.com/736x/f8/54/fc/f854fcbef3a8b032586e89a17299e889--marvel-women-marvel-girls.jpg", "Time spent alive, learning together is all that makes life worth living.", 3, 2, 3, 2, 6, 4);
-xmenCardContainer.innerHTML += iceman.getCard();
-xmenCardContainer.innerHTML += jeanGrey.getCard(); // Work out how to deal out a hand of cards; one to the player, one to the CPU
+var jeanGrey = new Card("Jean Grey", "https://i.pinimg.com/736x/f8/54/fc/f854fcbef3a8b032586e89a17299e889--marvel-women-marvel-girls.jpg", "Time spent alive, learning together is all that makes life worth living.", 3, 2, 3, 2, 6, 4); // Work out how to deal out a hand of cards; one to the player, one to the CPU
 // Before the game starts we have a deck of cards, at the start of the game that deck is suffled and two hands are dealt; one to the player, the other to the CPU.
 // The deck needs to be randomised then each hand gets 14 cards each
 // The deck
@@ -75,6 +73,12 @@ var shuffleDeck = deck.sort(function (a, b) {
 deck.forEach(function (elem, index) {
   deck.splice(index, 1);
   playerHand.push(elem);
-});
+}); // Display first card in player and CPU hand
+
+xmenCardContainer.innerHTML += playerHand[0].getCard();
+xmenCardContainer.innerHTML += cpuHand[0].getCard(); // Link the above to a Start Game button
+// First we see an explanasion of the game and a Start Game button
+// Once the button is clicked it turns to the card screen
+
 console.log(playerHand);
 console.log(cpuHand);

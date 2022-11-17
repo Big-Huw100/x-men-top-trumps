@@ -89,9 +89,6 @@ const iceman = new Card("Iceman", "https://upload.wikimedia.org/wikipedia/en/0/0
 
 const jeanGrey = new Card("Jean Grey", "https://i.pinimg.com/736x/f8/54/fc/f854fcbef3a8b032586e89a17299e889--marvel-women-marvel-girls.jpg", "Time spent alive, learning together is all that makes life worth living.", 3, 2, 3, 2, 6, 4);
 
-xmenCardContainer.innerHTML += iceman.getCard();
-xmenCardContainer.innerHTML += jeanGrey.getCard();
-
 // Work out how to deal out a hand of cards; one to the player, one to the CPU
 // Before the game starts we have a deck of cards, at the start of the game that deck is suffled and two hands are dealt; one to the player, the other to the CPU.
 // The deck needs to be randomised then each hand gets 14 cards each
@@ -113,6 +110,14 @@ deck.forEach(function(elem, index){
     deck.splice(index, 1);
     playerHand.push(elem);
 });
+
+// Display first card in player and CPU hand
+xmenCardContainer.innerHTML += playerHand[0].getCard();
+xmenCardContainer.innerHTML += cpuHand[0].getCard();
+
+// Link the above to a Start Game button
+// First we see an explanasion of the game and a Start Game button
+// Once the button is clicked it turns to the card screen
 
 console.log(playerHand);
 console.log(cpuHand);
