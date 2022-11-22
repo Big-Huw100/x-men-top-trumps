@@ -17,14 +17,6 @@ class Card {
             <h2 class ="x-men-card__name">${this.name}</h2>
             <img class="x-men-card__img" src=${this.img} />
             <p class="x-men-card__quote">${this.quote}</p>
-            <div class="x-men-card__button-container">
-                <button class="x-men-player-card__button" id="int">Intelligence</button>
-                <button class="x-men-player-card__button" id="str">Strength</button>
-                <button class="x-men-player-card__button" id="spd">Speed</button>
-                <button class="x-men-player-card__button" id="dur">Durability</button>
-                <button class="x-men-player-card__button" id="en-pro">Energy Projection</button>
-                <button class="x-men-player-card__button" id="figh-skill">Fighting Skills</button></div>
-            </div>
         </article>
         `;
         return getPlayerCard;
@@ -36,14 +28,6 @@ class Card {
             <h2 class ="x-men-card__name">${this.name}</h2>
             <img class="x-men-card__img" src=${this.img} />
             <p class="x-men-card__quote">${this.quote}</p>
-            <div class="x-men-card__button-container">
-                <button class="x-men-card__button">Intelligence</button>
-                <button class="x-men-card__button">Strength</button>
-                <button class="x-men-card__button">Speed</button>
-                <button class="x-men-card__button">Durability</button>
-                <button class="x-men-card__button">Energy Projection</button>
-                <button class="x-men-card__button">Fighting Skills</button></div>
-            </div>
         </article>
         `;
         return getCpuCard;

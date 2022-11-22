@@ -18,13 +18,13 @@ function () {
   _createClass(Card, [{
     key: "getPlayerCard",
     value: function getPlayerCard() {
-      var getPlayerCard = "\n        <article class =\"x-men-card\">\n            <h2 class =\"x-men-card__name\">".concat(this.name, "</h2>\n            <img class=\"x-men-card__img\" src=").concat(this.img, " />\n            <p class=\"x-men-card__quote\">").concat(this.quote, "</p>\n            <div class=\"x-men-card__button-container\">\n                <button class=\"x-men-player-card__button\" id=\"int\">Intelligence</button>\n                <button class=\"x-men-player-card__button\" id=\"str\">Strength</button>\n                <button class=\"x-men-player-card__button\" id=\"spd\">Speed</button>\n                <button class=\"x-men-player-card__button\" id=\"dur\">Durability</button>\n                <button class=\"x-men-player-card__button\" id=\"en-pro\">Energy Projection</button>\n                <button class=\"x-men-player-card__button\" id=\"figh-skill\">Fighting Skills</button></div>\n            </div>\n        </article>\n        ");
+      var getPlayerCard = "\n        <article class =\"x-men-card\">\n            <h2 class =\"x-men-card__name\">".concat(this.name, "</h2>\n            <img class=\"x-men-card__img\" src=").concat(this.img, " />\n            <p class=\"x-men-card__quote\">").concat(this.quote, "</p>\n        </article>\n        ");
       return getPlayerCard;
     }
   }, {
     key: "getCpuCard",
     value: function getCpuCard() {
-      var getCpuCard = "\n        <article class =\"x-men-card\">\n            <h2 class =\"x-men-card__name\">".concat(this.name, "</h2>\n            <img class=\"x-men-card__img\" src=").concat(this.img, " />\n            <p class=\"x-men-card__quote\">").concat(this.quote, "</p>\n            <div class=\"x-men-card__button-container\">\n                <button class=\"x-men-card__button\">Intelligence</button>\n                <button class=\"x-men-card__button\">Strength</button>\n                <button class=\"x-men-card__button\">Speed</button>\n                <button class=\"x-men-card__button\">Durability</button>\n                <button class=\"x-men-card__button\">Energy Projection</button>\n                <button class=\"x-men-card__button\">Fighting Skills</button></div>\n            </div>\n        </article>\n        ");
+      var getCpuCard = "\n        <article class =\"x-men-card\">\n            <h2 class =\"x-men-card__name\">".concat(this.name, "</h2>\n            <img class=\"x-men-card__img\" src=").concat(this.img, " />\n            <p class=\"x-men-card__quote\">").concat(this.quote, "</p>\n        </article>\n        ");
       return getCpuCard;
     }
   }]);

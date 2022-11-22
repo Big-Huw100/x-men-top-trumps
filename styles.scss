@@ -74,7 +74,7 @@ header {
     align-items: center;
     flex-direction: column;
     width: 20vw;
-    height: 85vh;
+    height: 70vh;
     border: $color-quaternary solid 5px;
     border-radius: 10px;
 
@@ -91,23 +91,19 @@ header {
     }
 
     &__quote {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         text-align: center;
         padding: 10px;
-        font-size: 11px;
+        font-size: 15px;
         background-color: $color-secondary;
         color: $color-quaternary;
-        height: 10%;
+        height: 25%;
         width: 80%;
         margin-top: 5px;
         border: $color-quaternary solid 3px;
         border-radius: 10px;
-    }
-
-    &__button-container {
-        display: grid;
-        grid-template-columns: auto auto auto;
-        gap: 2px;
-        margin: 10px 10px 0 10px;
     }
 
     &__button {
@@ -116,17 +112,22 @@ header {
         background-color: $color-tertiary;
 	    border: $color-quaternary solid 2px;
 	    cursor: pointer;
-        padding: 2px;
         font-size: 12px;
     }
 }
 
-.x-men-player-card__button {
-    height: 40px;
-    width: auto;
-    background-color: $color-tertiary;
-    border: $color-quaternary solid 2px;
-    cursor: pointer;
-    padding: 2px;
-    font-size: 12px;
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+
+    &__button {
+        background-color: $color-tertiary;
+        color: $color-quaternary;
+        height: 40px;
+        margin: 10px;
+        width: 80px;
+        font-weight: 700;
+    }
 }
+

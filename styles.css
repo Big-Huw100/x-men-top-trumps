@@ -65,7 +65,7 @@ header {
   align-items: center;
   flex-direction: column;
   width: 20vw;
-  height: 85vh;
+  height: 70vh;
   border: #0E1113 solid 5px;
   border-radius: 10px;
 }
@@ -80,22 +80,19 @@ header {
   border-radius: 10px;
 }
 .x-men-card__quote {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   padding: 10px;
-  font-size: 11px;
+  font-size: 15px;
   background-color: #FFFE03;
   color: #0E1113;
-  height: 10%;
+  height: 25%;
   width: 80%;
   margin-top: 5px;
   border: #0E1113 solid 3px;
   border-radius: 10px;
-}
-.x-men-card__button-container {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  gap: 2px;
-  margin: 10px 10px 0 10px;
 }
 .x-men-card__button {
   height: 40px;
@@ -103,16 +100,19 @@ header {
   background-color: #F94115;
   border: #0E1113 solid 2px;
   cursor: pointer;
-  padding: 2px;
   font-size: 12px;
 }
 
-.x-men-player-card__button {
-  height: 40px;
-  width: auto;
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+.button-container__button {
   background-color: #F94115;
-  border: #0E1113 solid 2px;
-  cursor: pointer;
-  padding: 2px;
-  font-size: 12px;
+  color: #0E1113;
+  height: 40px;
+  margin: 10px;
+  width: 80px;
+  font-weight: 700;
 }
