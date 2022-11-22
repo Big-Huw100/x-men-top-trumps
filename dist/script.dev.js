@@ -18,7 +18,7 @@ function () {
   _createClass(Card, [{
     key: "getPlayerCard",
     value: function getPlayerCard() {
-      var getPlayerCard = "\n        <article class =\"x-men-card\">\n            <h2 class =\"x-men-card__name\">".concat(this.name, "</h2>\n            <img class=\"x-men-card__img\" src=").concat(this.img, " />\n            <p class=\"x-men-card__quote\">").concat(this.quote, "</p>\n            <div class=\"x-men-card__button-container\">\n                <button class=\"x-men-player-card__button\">Intelligence</button>\n                <button class=\"x-men-player-card__button\">Strength</button>\n                <button class=\"x-men-player-card__button\">Speed</button>\n                <button class=\"x-men-player-card__button\">Durability</button>\n                <button class=\"x-men-player-card__button\">Energy Projection</button>\n                <button class=\"x-men-player-card__button\">Fighting Skills</button></div>\n            </div>\n        </article>\n        ");
+      var getPlayerCard = "\n        <article class =\"x-men-card\">\n            <h2 class =\"x-men-card__name\">".concat(this.name, "</h2>\n            <img class=\"x-men-card__img\" src=").concat(this.img, " />\n            <p class=\"x-men-card__quote\">").concat(this.quote, "</p>\n            <div class=\"x-men-card__button-container\">\n                <button class=\"x-men-player-card__button\" id=\"int\">Intelligence</button>\n                <button class=\"x-men-player-card__button\" id=\"str\">Strength</button>\n                <button class=\"x-men-player-card__button\" id=\"spd\">Speed</button>\n                <button class=\"x-men-player-card__button\" id=\"dur\">Durability</button>\n                <button class=\"x-men-player-card__button\" id=\"en-pro\">Energy Projection</button>\n                <button class=\"x-men-player-card__button\" id=\"figh-skill\">Fighting Skills</button></div>\n            </div>\n        </article>\n        ");
       return getPlayerCard;
     }
   }, {
@@ -35,9 +35,8 @@ function () {
 ; // ----------------------------------ELEMENTS-----------------------------------------
 
 var xmenPlayerCardContainer = document.querySelector(".x-men-player-card-container");
-var xmenCpuCardContainer = document.querySelector(".x-men-cpu-card-container");
-var startButton = document.querySelector(".start-screen__button");
-var statButton = document.querySelectorAll(".x-men-player-card__button"); // --------------------------------CARDS---------------------------------------------
+var xmenCpuCardContainer = document.querySelector(".x-men-cpu-card-container"); // const startButton = document.querySelector(".start-screen__button");
+// --------------------------------CARDS---------------------------------------------
 
 var proteus = new Card("Proteus", "https://upload.wikimedia.org/wikipedia/en/0/0e/Proteus_%28Marvel_Comics_character%29.png", "Everything is out there. Everything is real-- But nothing is, either.", 4, 2, 3, 7, 7, 2);
 var sabretooth = new Card("Sabretooth", "https://upload.wikimedia.org/wikipedia/en/7/7f/Sabretooth_%28Victor_Creed%29.jpg", "I've been ready to die since before you was born!", 2, 3, 2, 4, 1, 6);
@@ -66,10 +65,7 @@ var charlesXavier = new Card("Charles Xavier", "https://upload.wikimedia.org/wik
 var emmaFrost = new Card("Emma Frost", "https://subscriptions.acecomics.co.uk/wp-content/uploads/2018/07/xmenblackemmafrost.jpg", "One more time, then. For the children.", 4, 4, 2, 5, 5, 3);
 var bishop = new Card("Bishop", "https://external-preview.redd.it/bXK5Hu0-hGaAVzm7w7fPgdsQ9rua1OMZCeUju1U9oEY.jpg?auto=webp&s=1c5577efd17bbe0d851313cd797521586210bd74", "I'm a mutant, too. And I know what it's like to be alone in a strange land.", 2, 3, 7, 3, 4, 4);
 var iceman = new Card("Iceman", "https://upload.wikimedia.org/wikipedia/en/0/03/Iceman.png", "I've been a super hero since before I was old enough to shave.", 2, 3, 3, 4, 5, 4);
-var jeanGrey = new Card("Jean Grey", "https://i.pinimg.com/736x/f8/54/fc/f854fcbef3a8b032586e89a17299e889--marvel-women-marvel-girls.jpg", "Time spent alive, learning together is all that makes life worth living.", 3, 2, 3, 2, 6, 4); // Work out how to deal out a hand of cards; one to the player, one to the CPU
-// Before the game starts we have a deck of cards, at the start of the game that deck is suffled and two hands are dealt; one to the player, the other to the CPU.
-// The deck needs to be randomised then each hand gets 14 cards each
-// The deck
+var jeanGrey = new Card("Jean Grey", "https://i.pinimg.com/736x/f8/54/fc/f854fcbef3a8b032586e89a17299e889--marvel-women-marvel-girls.jpg", "Time spent alive, learning together is all that makes life worth living.", 3, 2, 3, 2, 6, 4); // The deck
 
 var deck = [proteus, sabretooth, colossus, gambit, cyclops, phoenixForce, apocalypse, cassandraNova, juggernaut, onslaught, storm, rogue, magneto, misterSinister, kittyPryde, beast, williamStryker, arcade, mystique, wolverine, nightcrawler, shadowKing, angel, charlesXavier, emmaFrost, bishop, iceman, jeanGrey]; // Player's hand
 
@@ -84,25 +80,96 @@ var shuffleDeck = deck.sort(function (a, b) {
 deck.forEach(function (elem, index) {
   deck.splice(index, 1);
   playerHand.push(elem);
-}); // Start Game button
+});
+xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard(); // Start Game button - causes a bug with the game play - look into it after card game works
+// startButton.addEventListener("click", () => {
+//     // Clear the screen. Present first cards
+//     xmenPlayerCardContainer.innerHTML = "";
+//     xmenPlayerCardContainer.innerHTML += playerHand[0].getPlayerCard();
+//     xmenCpuCardContainer.innerHTML += cpuHand[0].getCpuCard();
+// });
+// GAMEPLAY!! When a button is clicked on the player's card, if the value of that button is higher than the same button on the cpu's card that card joins the player's hand, if it's lower the player's card joins the cpu's hand.
 
-startButton.addEventListener("click", function () {
-  // Clear the screen. Present first cards
-  xmenPlayerCardContainer.innerHTML = "";
-  xmenPlayerCardContainer.innerHTML += playerHand[0].getPlayerCard();
-  xmenCpuCardContainer.innerHTML += cpuHand[0].getCpuCard();
-}); // GAMEPLAY!! When a button is clicked on the player's card, if the value of that button is higher than the same button on the cpu's card that card joins the player's hand, if it's lower the player's card joins the cpu's hand.
+var intButton = document.querySelector("#int");
+var strButton = document.querySelector("#str");
+var spdButton = document.querySelector("#spd");
+var durButton = document.querySelector("#dur");
+var enProButton = document.querySelector("#en-pro");
+var fighSkillButton = document.querySelector("#figh-skill");
+intButton.addEventListener("click", function () {
+  if (playerHand[0].intelligence > cpuHand[0].intelligence) {
+    playerHand.push(deck.shift());
+    xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+    xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+  } else {
+    deck.push(playerHand.shift());
+    xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+    xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+  }
 
-var win = "win";
-var loose = "loose";
+  ;
+});
+strButton.addEventListener("click", function () {
+  if (playerHand[0].strength > cpuHand[0].strength) {
+    playerHand.push(deck.shift());
+    xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+    xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+  } else {
+    deck.push(playerHand.shift());
+    xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+    xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+  }
 
-if (playerHand[0].intelligence > cpuHand[0].intelligence) {
-  console.log(win);
-} else {
-  console.log(loose);
-}
+  ;
+});
+spdButton.addEventListener("click", function () {
+  if (playerHand[0].speed > cpuHand[0].speed) {
+    playerHand.push(deck.shift());
+  } else {
+    deck.push(playerHand.shift());
+    xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+    xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+  }
 
-; // When the player or the cpu have no cards present a game over screen.
+  ;
+});
+durButton.addEventListener("click", function () {
+  if (playerHand[0].durability > cpuHand[0].durability) {
+    playerHand.push(deck.shift());
+    xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+    xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+  } else {
+    deck.push(playerHand.shift());
+    xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+    xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+  }
 
-console.log(playerHand[0].intelligence);
-console.log(cpuHand[0].intelligence);
+  ;
+});
+enProButton.addEventListener("click", function () {
+  if (playerHand[0].energyProjection > cpuHand[0].energyProjection) {
+    playerHand.push(deck.shift());
+    xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+    xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+  } else {
+    deck.push(playerHand.shift());
+    xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+    xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+  }
+
+  ;
+});
+fighSkillButton.addEventListener("click", function () {
+  if (playerHand[0].fightingSkills > cpuHand[0].fightingSkills) {
+    playerHand.push(deck.shift());
+    xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+    xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+  } else {
+    deck.push(playerHand.shift());
+    xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+    xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+  }
+
+  ;
+}); // When the player or the cpu have no cards present a game over screen comes up.

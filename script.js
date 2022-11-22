@@ -18,12 +18,12 @@ class Card {
             <img class="x-men-card__img" src=${this.img} />
             <p class="x-men-card__quote">${this.quote}</p>
             <div class="x-men-card__button-container">
-                <button class="x-men-player-card__button">Intelligence</button>
-                <button class="x-men-player-card__button">Strength</button>
-                <button class="x-men-player-card__button">Speed</button>
-                <button class="x-men-player-card__button">Durability</button>
-                <button class="x-men-player-card__button">Energy Projection</button>
-                <button class="x-men-player-card__button">Fighting Skills</button></div>
+                <button class="x-men-player-card__button" id="int">Intelligence</button>
+                <button class="x-men-player-card__button" id="str">Strength</button>
+                <button class="x-men-player-card__button" id="spd">Speed</button>
+                <button class="x-men-player-card__button" id="dur">Durability</button>
+                <button class="x-men-player-card__button" id="en-pro">Energy Projection</button>
+                <button class="x-men-player-card__button" id="figh-skill">Fighting Skills</button></div>
             </div>
         </article>
         `;
@@ -56,9 +56,7 @@ const xmenPlayerCardContainer = document.querySelector(".x-men-player-card-conta
 
 const xmenCpuCardContainer = document.querySelector(".x-men-cpu-card-container");
 
-const startButton = document.querySelector(".start-screen__button");
-
-const statButton = document.querySelectorAll(".x-men-player-card__button");
+// const startButton = document.querySelector(".start-screen__button");
 
 // --------------------------------CARDS---------------------------------------------
 
@@ -118,21 +116,17 @@ const iceman = new Card("Iceman", "https://upload.wikimedia.org/wikipedia/en/0/0
 
 const jeanGrey = new Card("Jean Grey", "https://i.pinimg.com/736x/f8/54/fc/f854fcbef3a8b032586e89a17299e889--marvel-women-marvel-girls.jpg", "Time spent alive, learning together is all that makes life worth living.", 3, 2, 3, 2, 6, 4);
 
-// Work out how to deal out a hand of cards; one to the player, one to the CPU
-// Before the game starts we have a deck of cards, at the start of the game that deck is suffled and two hands are dealt; one to the player, the other to the CPU.
-// The deck needs to be randomised then each hand gets 14 cards each
-
 // The deck
-const deck = [proteus, sabretooth, colossus, gambit, cyclops, phoenixForce, apocalypse, cassandraNova, juggernaut, onslaught, storm, rogue, magneto, misterSinister, kittyPryde, beast, williamStryker, arcade, mystique, wolverine, nightcrawler, shadowKing, angel, charlesXavier, emmaFrost, bishop, iceman, jeanGrey];
+let deck = [proteus, sabretooth, colossus, gambit, cyclops, phoenixForce, apocalypse, cassandraNova, juggernaut, onslaught, storm, rogue, magneto, misterSinister, kittyPryde, beast, williamStryker, arcade, mystique, wolverine, nightcrawler, shadowKing, angel, charlesXavier, emmaFrost, bishop, iceman, jeanGrey];
 
 // Player's hand
-let playerHand = [];
+let playerHand = []
 
 // CPU's hand - CPU = deck so that the CPU gets the cards not dealt to the player
 let cpuHand = deck;
 
 // Shuffles the deck
-const shuffleDeck = deck.sort((a, b) => 0.5 - Math.random());
+let shuffleDeck = deck.sort((a, b) => 0.5 - Math.random());
 
 // Deals cards to player
 deck.forEach(function(elem, index){
@@ -140,27 +134,94 @@ deck.forEach(function(elem, index){
     playerHand.push(elem);
 });
 
-// Start Game button
-startButton.addEventListener("click", () => {
-    // Clear the screen. Present first cards
-    xmenPlayerCardContainer.innerHTML = "";
-    xmenPlayerCardContainer.innerHTML += playerHand[0].getPlayerCard();
-    xmenCpuCardContainer.innerHTML += cpuHand[0].getCpuCard();
-});
+xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+
+// Start Game button - causes a bug with the game play - look into it after card game works
+// startButton.addEventListener("click", () => {
+//     // Clear the screen. Present first cards
+//     xmenPlayerCardContainer.innerHTML = "";
+//     xmenPlayerCardContainer.innerHTML += playerHand[0].getPlayerCard();
+//     xmenCpuCardContainer.innerHTML += cpuHand[0].getCpuCard();
+// });
 
 // GAMEPLAY!! When a button is clicked on the player's card, if the value of that button is higher than the same button on the cpu's card that card joins the player's hand, if it's lower the player's card joins the cpu's hand.
 
-const win = "win"
+const intButton = document.querySelector("#int");
+const strButton = document.querySelector("#str");
+const spdButton = document.querySelector("#spd");
+const durButton = document.querySelector("#dur");
+const enProButton = document.querySelector("#en-pro");
+const fighSkillButton = document.querySelector("#figh-skill");
 
-const loose = "loose"
+intButton.addEventListener("click", () => {
+        if (playerHand[0].intelligence > cpuHand[0].intelligence) {
+            playerHand.push(deck.shift());
+            xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+            xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+        } else {
+            deck.push(playerHand.shift());
+            xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+            xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+        };
+    });
 
-if (playerHand[0].intelligence > cpuHand[0].intelligence) {
-    console.log(win)
-} else {
-    console.log(loose)
-};
+strButton.addEventListener("click", () => {
+    if (playerHand[0].strength > cpuHand[0].strength) {
+        playerHand.push(deck.shift());
+        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+    } else {
+        deck.push(playerHand.shift());
+        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+    };
+});
 
-// When the player or the cpu have no cards present a game over screen.
+spdButton.addEventListener("click", () => {
+    if (playerHand[0].speed > cpuHand[0].speed) {
+        playerHand.push(deck.shift());
+    } else {
+        deck.push(playerHand.shift());
+        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+    };
+});
 
-console.log(playerHand[0].intelligence);
-console.log(cpuHand[0].intelligence);
+durButton.addEventListener("click", () => {
+    if (playerHand[0].durability > cpuHand[0].durability) {
+        playerHand.push(deck.shift());
+        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+    } else {
+        deck.push(playerHand.shift());
+        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+    };
+});
+
+enProButton.addEventListener("click", () => {
+    if (playerHand[0].energyProjection > cpuHand[0].energyProjection) {
+        playerHand.push(deck.shift());
+        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+    } else {
+        deck.push(playerHand.shift());
+        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+    };
+});
+
+fighSkillButton.addEventListener("click", () => {
+    if (playerHand[0].fightingSkills > cpuHand[0].fightingSkills) {
+        playerHand.push(deck.shift());
+        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+    } else {
+        deck.push(playerHand.shift());
+        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+    };
+});
+
+// When the player or the cpu have no cards present a game over screen comes up.
