@@ -117,11 +117,13 @@ const iceman = new Card("Iceman", "https://upload.wikimedia.org/wikipedia/en/0/0
 
 const jeanGrey = new Card("Jean Grey", "https://i.pinimg.com/736x/f8/54/fc/f854fcbef3a8b032586e89a17299e889--marvel-women-marvel-girls.jpg", "Time spent alive, learning together is all that makes life worth living.", 3, 2, 3, 2, 6, 4);
 
-const blank = new Card("Blank", "https://seeklogo.com/images/X/x-men-logo-5B71410F88-seeklogo.com.png", "BLANK", 1,1,1,1,1,1)
+const toad = new Card("Toad", "https://seanmills6.files.wordpress.com/2018/03/solo-xmen-list-02.jpg", "I ain't the kind of toad that turns into a prince when some beautiful lady kisses him. I just stay a toad.", 3, 4, 3, 3, 1, 3);
+
+const psylocke = new Card("Psylocke", "https://static.tvtropes.org/pmwiki/pub/images/uncanny_x_men_vol_1_509_textless.jpg", "That's right. Because pain goes away. Just like this hurt will. So just remember -- all pain is only temporary, okay? No hurt lasts forever.", 2, 6, 4, 6, 5, 4);
 
 // ----------------------------------------------THE DECK-----------------------------------------------
 
-const deck = [proteus, sabretooth, colossus, gambit, cyclops, phoenixForce, apocalypse, cassandraNova, juggernaut, onslaught, storm, rogue, magneto, misterSinister, kittyPryde, beast, williamStryker, arcade, mystique, wolverine, nightcrawler, shadowKing, angel, charlesXavier, emmaFrost, bishop, iceman, jeanGrey];
+const deck = [proteus, sabretooth, colossus, gambit, cyclops, phoenixForce, apocalypse, cassandraNova, juggernaut, onslaught, storm, rogue, magneto, misterSinister, kittyPryde, beast, williamStryker, arcade, mystique, wolverine, nightcrawler, shadowKing, angel, charlesXavier, emmaFrost, bishop, iceman, jeanGrey, toad, psylocke];
 
 // ------------------------------------------SHUFFLE THE DECK-------------------------------------------
 
@@ -155,6 +157,7 @@ const enProButton = document.querySelector("#en-pro");
 const fightSkillButton = document.querySelector("#fight-skill");
 
 intButton.addEventListener("click", () => {
+    if(!cpuHand.length || !playerHand.length) return;
     if (playerHand[0].intelligence > cpuHand[0].intelligence) {
         playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
@@ -171,6 +174,7 @@ intButton.addEventListener("click", () => {
     });
 
 strButton.addEventListener("click", () => {
+    if(!cpuHand.length || !playerHand.length) return;
     if (playerHand[0].strength > cpuHand[0].strength) {
         playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
@@ -187,6 +191,7 @@ strButton.addEventListener("click", () => {
 });
 
 spdButton.addEventListener("click", () => {
+    if(!cpuHand.length || !playerHand.length) return;
     if (playerHand[0].speed > cpuHand[0].speed) {
         playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
@@ -203,6 +208,7 @@ spdButton.addEventListener("click", () => {
 });
 
 durButton.addEventListener("click", () => {
+    if(!cpuHand.length || !playerHand.length) return;
     if (playerHand[0].durability > cpuHand[0].durability) {
         playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
@@ -219,6 +225,7 @@ durButton.addEventListener("click", () => {
 });
 
 enProButton.addEventListener("click", () => {
+    if(!cpuHand.length || !playerHand.length) return;
     if (playerHand[0].energyProjection > cpuHand[0].energyProjection) {
         playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
@@ -235,6 +242,7 @@ enProButton.addEventListener("click", () => {
 });
 
 fightSkillButton.addEventListener("click", () => {
+    if(!cpuHand.length || !playerHand.length) return;
     if (playerHand[0].fightingSkills > cpuHand[0].fightingSkills) {
         playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
