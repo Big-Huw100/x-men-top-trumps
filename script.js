@@ -1,3 +1,5 @@
+// -------------------------------CARD CLASS---------------------------------------
+
 class Card {
     constructor(name, img, quote, intelligence, strength, speed, durability, energyProjection, fightingSkills) {
         (this.name = name),
@@ -32,6 +34,17 @@ class Card {
         `;
         return getCpuCard;
     }
+
+    gameOverCard() {
+        const gameOverCard = `
+        <article class ="x-men-card">
+            <h2 class ="x-men-card__name">GAME OVER</h2>
+            <img class="x-men-card__img" src=https://i.ebayimg.com/images/g/qRAAAOSwrNpiiUXR/s-l500.jpg />
+            <p class="x-men-card__quote">GAME OVER</p>
+        </article>
+        `;
+        return gameOverCard;
+    }
 };
 
 // ----------------------------------ELEMENTS-----------------------------------------
@@ -45,8 +58,6 @@ const playerScore = document.querySelector(".player-score");
 const cpuScore = document.querySelector(".cpu-score");
 
 const vs = document.querySelector(".versus");
-
-// const startButton = document.querySelector(".start-screen__button");
 
 // --------------------------------CARDS---------------------------------------------
 
@@ -106,139 +117,138 @@ const iceman = new Card("Iceman", "https://upload.wikimedia.org/wikipedia/en/0/0
 
 const jeanGrey = new Card("Jean Grey", "https://i.pinimg.com/736x/f8/54/fc/f854fcbef3a8b032586e89a17299e889--marvel-women-marvel-girls.jpg", "Time spent alive, learning together is all that makes life worth living.", 3, 2, 3, 2, 6, 4);
 
-// The deck
-let deck = [proteus, sabretooth, colossus, gambit, cyclops, phoenixForce, apocalypse, cassandraNova, juggernaut, onslaught, storm, rogue, magneto, misterSinister, kittyPryde, beast, williamStryker, arcade, mystique, wolverine, nightcrawler, shadowKing, angel, charlesXavier, emmaFrost, bishop, iceman, jeanGrey];
+const blank = new Card("Blank", "https://seeklogo.com/images/X/x-men-logo-5B71410F88-seeklogo.com.png", "BLANK", 1,1,1,1,1,1)
 
-// Player's hand
-let playerHand = []
+// ----------------------------------------------THE DECK-----------------------------------------------
 
-// CPU's hand - CPU = deck so that the CPU gets the cards not dealt to the player
-let cpuHand = deck;
+const deck = [proteus, sabretooth, colossus, gambit, cyclops, phoenixForce, apocalypse, cassandraNova, juggernaut, onslaught, storm, rogue, magneto, misterSinister, kittyPryde, beast, williamStryker, arcade, mystique, wolverine, nightcrawler, shadowKing, angel, charlesXavier, emmaFrost, bishop, iceman, jeanGrey];
 
-// Shuffles the deck
-let shuffleDeck = deck.sort((a, b) => 0.5 - Math.random());
+// ------------------------------------------SHUFFLE THE DECK-------------------------------------------
 
-// Deals cards to player
-deck.forEach(function(elem, index){
-    deck.splice(index, 1);
-    playerHand.push(elem);
-});
+const shuffleDeck = deck.sort((a, b) => 0.5 - Math.random());
+
+// -------------------------------------------DEAL THE CARDS--------------------------------------------
+
+const cutDeck = Math.ceil(shuffleDeck.length / 2);
+
+const playerHand = shuffleDeck.slice(0, cutDeck);
+
+const cpuHand = deck.slice(cutDeck);
+
+// -------------------------------------------DISPLAY CARDS-----------------------------------------------
 
 xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
 xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
 
+// -------------------------------------------SCORE TRACKER------------------------------------------------
+
 playerScore.innerHTML = `Player Score: ${playerHand.length}`
 cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
 
-// Start Game button - causes a bug with the game play - look into it after card game works
-// startButton.addEventListener("click", () => {
-//     // Clear the screen. Present first cards
-//     xmenPlayerCardContainer.innerHTML = "";
-//     xmenPlayerCardContainer.innerHTML += playerHand[0].getPlayerCard();
-//     xmenCpuCardContainer.innerHTML += cpuHand[0].getCpuCard();
-// });
-
-// GAMEPLAY!! When a button is clicked on the player's card, if the value of that button is higher than the same button on the cpu's card that card joins the player's hand, if it's lower the player's card joins the cpu's hand.
+// ----------------------------------------------GAMEPLAY-------------------------------------------------=
 
 const intButton = document.querySelector("#int");
 const strButton = document.querySelector("#str");
 const spdButton = document.querySelector("#spd");
 const durButton = document.querySelector("#dur");
 const enProButton = document.querySelector("#en-pro");
-const fightSkillButton = document.querySelector("#figh-skill");
+const fightSkillButton = document.querySelector("#fight-skill");
 
 intButton.addEventListener("click", () => {
-        if (playerHand[0].intelligence > cpuHand[0].intelligence) {
-            playerHand.push(deck.shift());
-            xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
-            xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
-            playerScore.innerHTML = `Player Score: ${playerHand.length}`
-            cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
-        } else {
-            deck.push(playerHand.shift());
-            xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
-            xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
-            playerScore.innerHTML = `Player Score: ${playerHand.length}`
-            cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
-        };
+    if (playerHand[0].intelligence > cpuHand[0].intelligence) {
+        playerHand.push(cpuHand.shift());
+        playerScore.innerHTML = `Player Score: ${playerHand.length}`
+        cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
+        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+    } else {
+        cpuHand.push(playerHand.shift());
+        playerScore.innerHTML = `Player Score: ${playerHand.length}`
+        cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
+        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+    };
     });
 
 strButton.addEventListener("click", () => {
     if (playerHand[0].strength > cpuHand[0].strength) {
-        playerHand.push(deck.shift());
-        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
-        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+        playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
         cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
+        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
     } else {
-        deck.push(playerHand.shift());
-        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
-        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+        cpuHand.push(playerHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
         cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
+        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
     };
 });
 
 spdButton.addEventListener("click", () => {
     if (playerHand[0].speed > cpuHand[0].speed) {
-        playerHand.push(deck.shift());
-        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
-        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+        playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
         cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
+        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
     } else {
-        deck.push(playerHand.shift());
-        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
-        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+        cpuHand.push(playerHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
         cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
+        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
     };
 });
 
 durButton.addEventListener("click", () => {
     if (playerHand[0].durability > cpuHand[0].durability) {
-        playerHand.push(deck.shift());
-        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
-        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+        playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
         cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
+        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
     } else {
-        deck.push(playerHand.shift());
-        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
-        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+        cpuHand.push(playerHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
         cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
+        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
     };
 });
 
 enProButton.addEventListener("click", () => {
     if (playerHand[0].energyProjection > cpuHand[0].energyProjection) {
-        playerHand.push(deck.shift());
-        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
-        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+        playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
         cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
+        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
     } else {
-        deck.push(playerHand.shift());
-        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
-        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+        cpuHand.push(playerHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
         cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
+        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
     };
 });
 
 fightSkillButton.addEventListener("click", () => {
     if (playerHand[0].fightingSkills > cpuHand[0].fightingSkills) {
-        playerHand.push(deck.shift());
-        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
-        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+        playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
         cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
+        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
     } else {
-        deck.push(playerHand.shift());
-        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
-        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+        cpuHand.push(playerHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
         cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
+        xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
     };
 });
+
+console.log(cpuHand);
+console.log(playerHand);
