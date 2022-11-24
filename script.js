@@ -34,17 +34,6 @@ class Card {
         `;
         return getCpuCard;
     }
-
-    gameOverCard() {
-        const gameOverCard = `
-        <article class ="x-men-card">
-            <h2 class ="x-men-card__name">GAME OVER</h2>
-            <img class="x-men-card__img" src=https://i.ebayimg.com/images/g/qRAAAOSwrNpiiUXR/s-l500.jpg />
-            <p class="x-men-card__quote">GAME OVER</p>
-        </article>
-        `;
-        return gameOverCard;
-    }
 };
 
 // ----------------------------------ELEMENTS-----------------------------------------

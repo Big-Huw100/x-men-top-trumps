@@ -28,12 +28,6 @@ function () {
       var getCpuCard = "\n        <article class =\"x-men-card\">\n            <h2 class =\"x-men-card__name\">".concat(this.name, "</h2>\n            <img class=\"x-men-card__img\" src=").concat(this.img, " />\n            <p class=\"x-men-card__quote\">").concat(this.quote, "</p>\n        </article>\n        ");
       return getCpuCard;
     }
-  }, {
-    key: "gameOverCard",
-    value: function gameOverCard() {
-      var gameOverCard = "\n        <article class =\"x-men-card\">\n            <h2 class =\"x-men-card__name\">GAME OVER</h2>\n            <img class=\"x-men-card__img\" src=https://i.ebayimg.com/images/g/qRAAAOSwrNpiiUXR/s-l500.jpg />\n            <p class=\"x-men-card__quote\">GAME OVER</p>\n        </article>\n        ";
-      return gameOverCard;
-    }
   }]);
 
   return Card;
