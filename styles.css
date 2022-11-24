@@ -15,30 +15,6 @@ header {
   font-size: 20px;
 }
 
-.start-screen {
-  background-color: #1D90F3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 70vw;
-  margin-top: 20px;
-  margin-left: 100px;
-  padding: 40px;
-}
-.start-screen__rules {
-  font-size: 25px;
-  text-align: center;
-  color: #FFFE03;
-}
-.start-screen__button {
-  background-color: #F94115;
-  color: #0E1113;
-  width: 20%;
-  font-size: 40px;
-  margin-top: 50px;
-  cursor: pointer;
-}
-
 .game-board {
   display: flex;
   justify-content: space-evenly;
@@ -116,4 +92,18 @@ header {
   margin: 10px;
   width: 80px;
   font-weight: 700;
+}
+
+h3 {
+  background-color: #1D90F3;
+  color: #FFFE03;
+  border: #0E1113 solid 3px;
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 30px;
+}
+
+.versus {
+  background-color: #F94115;
+  color: #0E1113;
 }
