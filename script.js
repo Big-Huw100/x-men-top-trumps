@@ -1,4 +1,4 @@
-// -------------------------------CARD CLASS---------------------------------------
+// ------------------------------------------------CARD CLASS------------------------------------------------
 
 class Card {
     constructor(name, img, quote, intelligence, strength, speed, durability, energyProjection, fightingSkills) {
@@ -36,7 +36,7 @@ class Card {
     }
 };
 
-// ----------------------------------ELEMENTS-----------------------------------------
+// -----------------------------------------------ELEMENTS---------------------------------------------------
 
 const xmenPlayerCardContainer = document.querySelector(".x-men-player-card-container");
 
@@ -48,7 +48,7 @@ const cpuScore = document.querySelector(".cpu-score");
 
 const vs = document.querySelector(".versus");
 
-// --------------------------------CARDS---------------------------------------------
+// ------------------------------------------------CARDS----------------------------------------------------
 
 const proteus = new Card("Proteus", "./images/proteus.png","Everything is out there. Everything is real-- But nothing is, either.", 4, 2, 3, 7, 7, 2);
 
@@ -110,15 +110,15 @@ const toad = new Card("Toad", "./images/toad.webp", "I ain't the kind of toad th
 
 const psylocke = new Card("Psylocke", "./images/psylocke.webp", "That's right. Because pain goes away. Just like this hurt will. So just remember -- all pain is only temporary, okay? No hurt lasts forever.", 2, 6, 4, 6, 5, 4);
 
-// ----------------------------------------------THE DECK-----------------------------------------------
+// ----------------------------------------------THE DECK----------------------------------------------------
 
 const deck = [proteus, sabretooth, colossus, gambit, cyclops, phoenixForce, apocalypse, cassandraNova, juggernaut, onslaught, storm, rogue, magneto, misterSinister, kittyPryde, beast, williamStryker, arcade, mystique, wolverine, nightcrawler, shadowKing, angel, charlesXavier, emmaFrost, bishop, iceman, jeanGrey, toad, psylocke];
 
-// ------------------------------------------SHUFFLE THE DECK-------------------------------------------
+// ------------------------------------------SHUFFLE THE DECK------------------------------------------------
 
 const shuffleDeck = deck.sort((a, b) => 0.5 - Math.random());
 
-// -------------------------------------------DEAL THE CARDS--------------------------------------------
+// -------------------------------------------DEAL THE CARDS-------------------------------------------------
 
 const cutDeck = Math.ceil(shuffleDeck.length / 2);
 
@@ -126,17 +126,17 @@ const playerHand = shuffleDeck.slice(0, cutDeck);
 
 const cpuHand = deck.slice(cutDeck);
 
-// -------------------------------------------DISPLAY CARDS-----------------------------------------------
+// -------------------------------------------DISPLAY CARDS---------------------------------------------------
 
 xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
 xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
 
-// -------------------------------------------SCORE TRACKER------------------------------------------------
+// -------------------------------------------SCORE TRACKER---------------------------------------------------
 
 playerScore.innerHTML = `Player Score: ${playerHand.length}`
 cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
 
-// ----------------------------------------------GAMEPLAY-------------------------------------------------=
+// ---------------------------------------------GAMEPLAY------------------------------------------------------
 
 const intButton = document.querySelector("#int");
 const strButton = document.querySelector("#str");
@@ -146,7 +146,6 @@ const enProButton = document.querySelector("#en-pro");
 const fightSkillButton = document.querySelector("#fight-skill");
 
 intButton.addEventListener("click", () => {
-    if(!cpuHand.length || !playerHand.length) return;
     if (playerHand[0].intelligence > cpuHand[0].intelligence) {
         playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
@@ -163,7 +162,6 @@ intButton.addEventListener("click", () => {
     });
 
 strButton.addEventListener("click", () => {
-    if(!cpuHand.length || !playerHand.length) return;
     if (playerHand[0].strength > cpuHand[0].strength) {
         playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
@@ -180,7 +178,6 @@ strButton.addEventListener("click", () => {
 });
 
 spdButton.addEventListener("click", () => {
-    if(!cpuHand.length || !playerHand.length) return;
     if (playerHand[0].speed > cpuHand[0].speed) {
         playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
@@ -197,7 +194,6 @@ spdButton.addEventListener("click", () => {
 });
 
 durButton.addEventListener("click", () => {
-    if(!cpuHand.length || !playerHand.length) return;
     if (playerHand[0].durability > cpuHand[0].durability) {
         playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
@@ -214,7 +210,6 @@ durButton.addEventListener("click", () => {
 });
 
 enProButton.addEventListener("click", () => {
-    if(!cpuHand.length || !playerHand.length) return;
     if (playerHand[0].energyProjection > cpuHand[0].energyProjection) {
         playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
@@ -231,7 +226,6 @@ enProButton.addEventListener("click", () => {
 });
 
 fightSkillButton.addEventListener("click", () => {
-    if(!cpuHand.length || !playerHand.length) return;
     if (playerHand[0].fightingSkills > cpuHand[0].fightingSkills) {
         playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
