@@ -34,6 +34,17 @@ class Card {
         `;
         return getCpuCard;
     }
+
+    getGameOverCard() {
+        const getGameOverCard = `
+        <article class ="x-men-card">
+            <h2 class ="x-men-card__name">${this.name}</h2>
+            <img class="x-men-card__img" src=${this.img} />
+            <p class="x-men-card__quote">${this.quote}</p>
+        </article>
+        `;
+        return getGameOverCard;
+    }
 };
 
 // -----------------------------------------------ELEMENTS---------------------------------------------------
@@ -110,6 +121,10 @@ const toad = new Card("Toad", "./images/toad.webp", "I ain't the kind of toad th
 
 const psylocke = new Card("Psylocke", "./images/psylocke.webp", "That's right. Because pain goes away. Just like this hurt will. So just remember -- all pain is only temporary, okay? No hurt lasts forever.", 2, 6, 4, 6, 5, 4);
 
+// -------------------------------------------GAME OVER CARD-------------------------------------------------
+
+const gameOverCard = new Card("GAME OVER", "./images/gameover.jpg", "Argh, you have bested me!", 0, 0, 0, 0, 0, 0);
+
 // ----------------------------------------------THE DECK----------------------------------------------------
 
 const deck = [proteus, sabretooth, colossus, gambit, cyclops, phoenixForce, apocalypse, cassandraNova, juggernaut, onslaught, storm, rogue, magneto, misterSinister, kittyPryde, beast, williamStryker, arcade, mystique, wolverine, nightcrawler, shadowKing, angel, charlesXavier, emmaFrost, bishop, iceman, jeanGrey, toad, psylocke];
@@ -146,100 +161,125 @@ const enProButton = document.querySelector("#en-pro");
 const fightSkillButton = document.querySelector("#fight-skill");
 
 intButton.addEventListener("click", () => {
-    if (playerHand[0].intelligence > cpuHand[0].intelligence) {
+    if (playerHand[0].energyProjection > cpuHand[0]?.intelligence && cpuHand.length > 0) {
         playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
         cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
         xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
-        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0]?.getCpuCard();
     } else {
         cpuHand.push(playerHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
         cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
         xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
-        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0]?.getCpuCard();
     };
-    });
+    if (cpuHand.length === 0) {
+        vs.innerHTML = "You Win!";
+        xmenCpuCardContainer.innerHTML = gameOverCard.getGameOverCard();
+    }
+});
 
 strButton.addEventListener("click", () => {
-    if (playerHand[0].strength > cpuHand[0].strength) {
+    if (playerHand[0].energyProjection > cpuHand[0]?.strength && cpuHand.length > 0) {
         playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
         cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
         xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
-        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0]?.getCpuCard();
     } else {
         cpuHand.push(playerHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
         cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
         xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
-        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0]?.getCpuCard();
     };
+    if (cpuHand.length === 0) {
+        vs.innerHTML = "You Win!";
+        xmenCpuCardContainer.innerHTML = gameOverCard.getGameOverCard();
+    }
 });
 
 spdButton.addEventListener("click", () => {
-    if (playerHand[0].speed > cpuHand[0].speed) {
+    if (playerHand[0].energyProjection > cpuHand[0]?.speed && cpuHand.length > 0) {
         playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
         cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
         xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
-        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0]?.getCpuCard();
     } else {
         cpuHand.push(playerHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
         cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
         xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
-        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0]?.getCpuCard();
     };
+    if (cpuHand.length === 0) {
+        vs.innerHTML = "You Win!";
+        xmenCpuCardContainer.innerHTML = gameOverCard.getGameOverCard();
+    }
 });
 
 durButton.addEventListener("click", () => {
-    if (playerHand[0].durability > cpuHand[0].durability) {
+    if (playerHand[0].energyProjection > cpuHand[0]?.durability && cpuHand.length > 0) {
         playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
         cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
         xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
-        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0]?.getCpuCard();
     } else {
         cpuHand.push(playerHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
         cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
         xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
-        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0]?.getCpuCard();
     };
+    if (cpuHand.length === 0) {
+        vs.innerHTML = "You Win!";
+        xmenCpuCardContainer.innerHTML = gameOverCard.getGameOverCard();
+    }
 });
 
 enProButton.addEventListener("click", () => {
-    if (playerHand[0].energyProjection > cpuHand[0].energyProjection) {
+    if (playerHand[0].energyProjection > cpuHand[0]?.energyProjection && cpuHand.length > 0) {
         playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
         cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
         xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
-        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0]?.getCpuCard();
     } else {
         cpuHand.push(playerHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
         cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
         xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
-        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0]?.getCpuCard();
     };
+    if (cpuHand.length === 0) {
+        vs.innerHTML = "You Win!";
+        xmenCpuCardContainer.innerHTML = gameOverCard.getGameOverCard();
+    }
 });
 
 fightSkillButton.addEventListener("click", () => {
-    if (playerHand[0].fightingSkills > cpuHand[0].fightingSkills) {
+    if (playerHand[0].fightingSkills > cpuHand[0]?.fightingSkills && cpuHand.length > 0) {
         playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
         cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
         xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
-        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0]?.getCpuCard();
     } else {
         cpuHand.push(playerHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
         cpuScore.innerHTML = `CPU Score: ${cpuHand.length}`
         xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
-        xmenCpuCardContainer.innerHTML = cpuHand[0].getCpuCard();
+        xmenCpuCardContainer.innerHTML = cpuHand[0]?.getCpuCard();
     };
+    if (cpuHand.length === 0) {
+        vs.innerHTML = "You Win!";
+        xmenCpuCardContainer.innerHTML = gameOverCard.getGameOverCard();
+    }
 });
+
 
 console.log(cpuHand);
 console.log(playerHand);

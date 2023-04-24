@@ -95,7 +95,7 @@ var durButton = document.querySelector("#dur");
 var enProButton = document.querySelector("#en-pro");
 var fightSkillButton = document.querySelector("#fight-skill");
 intButton.addEventListener("click", function () {
-  if (playerHand[0].intelligence > cpuHand[0].intelligence) {
+  if (playerHand[0].energyProjection > cpuHand[0].intelligence && cpuHand.length > 0) {
     playerHand.push(cpuHand.shift());
     playerScore.innerHTML = "Player Score: ".concat(playerHand.length);
     cpuScore.innerHTML = "CPU Score: ".concat(cpuHand.length);
@@ -112,7 +112,7 @@ intButton.addEventListener("click", function () {
   ;
 });
 strButton.addEventListener("click", function () {
-  if (playerHand[0].strength > cpuHand[0].strength) {
+  if (playerHand[0].energyProjection > cpuHand[0].strength && cpuHand.length > 0) {
     playerHand.push(cpuHand.shift());
     playerScore.innerHTML = "Player Score: ".concat(playerHand.length);
     cpuScore.innerHTML = "CPU Score: ".concat(cpuHand.length);
@@ -129,7 +129,7 @@ strButton.addEventListener("click", function () {
   ;
 });
 spdButton.addEventListener("click", function () {
-  if (playerHand[0].speed > cpuHand[0].speed) {
+  if (playerHand[0].energyProjection > cpuHand[0].speed && cpuHand.length > 0) {
     playerHand.push(cpuHand.shift());
     playerScore.innerHTML = "Player Score: ".concat(playerHand.length);
     cpuScore.innerHTML = "CPU Score: ".concat(cpuHand.length);
@@ -146,7 +146,7 @@ spdButton.addEventListener("click", function () {
   ;
 });
 durButton.addEventListener("click", function () {
-  if (playerHand[0].durability > cpuHand[0].durability) {
+  if (playerHand[0].energyProjection > cpuHand[0].durability && cpuHand.length > 0) {
     playerHand.push(cpuHand.shift());
     playerScore.innerHTML = "Player Score: ".concat(playerHand.length);
     cpuScore.innerHTML = "CPU Score: ".concat(cpuHand.length);
@@ -163,7 +163,7 @@ durButton.addEventListener("click", function () {
   ;
 });
 enProButton.addEventListener("click", function () {
-  if (playerHand[0].energyProjection > cpuHand[0].energyProjection) {
+  if (playerHand[0].energyProjection > cpuHand[0].energyProjection && cpuHand.length > 0) {
     playerHand.push(cpuHand.shift());
     playerScore.innerHTML = "Player Score: ".concat(playerHand.length);
     cpuScore.innerHTML = "CPU Score: ".concat(cpuHand.length);
@@ -180,7 +180,7 @@ enProButton.addEventListener("click", function () {
   ;
 });
 fightSkillButton.addEventListener("click", function () {
-  if (playerHand[0].fightingSkills > cpuHand[0].fightingSkills) {
+  if (playerHand[0].fightingSkills > cpuHand[0].fightingSkills && cpuHand.length > 0) {
     playerHand.push(cpuHand.shift());
     playerScore.innerHTML = "Player Score: ".concat(playerHand.length);
     cpuScore.innerHTML = "CPU Score: ".concat(cpuHand.length);
