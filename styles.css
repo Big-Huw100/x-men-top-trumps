@@ -74,14 +74,6 @@ header {
   border: #0e1113 solid 3px;
   border-radius: 10px;
 }
-.x-men-card__button {
-  height: 40px;
-  width: auto;
-  background-color: #f94115;
-  border: #0e1113 solid 2px;
-  cursor: pointer;
-  font-size: 12px;
-}
 
 .button-container {
   display: flex;
@@ -89,12 +81,18 @@ header {
   margin-top: 25px;
 }
 .button-container__button {
-  background-color: #f94115;
-  color: #0e1113;
   height: 40px;
   margin: 10px;
   width: 80px;
   font-weight: 700;
+  border: #0e1113 solid 2px;
+  cursor: pointer;
+  background-color: #f94115;
+  color: #0e1113;
+}
+.button-container__button:active {
+  color: #f94115;
+  background-color: #0e1113;
 }
 
 h3 {
