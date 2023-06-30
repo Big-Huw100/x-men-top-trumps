@@ -161,6 +161,16 @@ const enProButton = document.querySelector("#en-pro");
 const fightSkillButton = document.querySelector("#fight-skill");
 
 intButton.addEventListener("click", () => {
+    if (playerHand.length === 0) {
+        vs.innerHTML = "You Lose!";
+        xmenPlayerCardContainer.innerHTML = gameOverCard.getGameOverCard();
+        return;
+    }
+    if (cpuHand.length === 0) {
+        vs.innerHTML = "You Win!";
+        xmenCpuCardContainer.innerHTML = gameOverCard.getGameOverCard();
+        return;
+    }
     if (playerHand[0].energyProjection > cpuHand[0]?.intelligence && cpuHand.length > 0) {
         playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
@@ -174,13 +184,19 @@ intButton.addEventListener("click", () => {
         xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
         xmenCpuCardContainer.innerHTML = cpuHand[0]?.getCpuCard();
     };
-    if (cpuHand.length === 0) {
-        vs.innerHTML = "You Win!";
-        xmenCpuCardContainer.innerHTML = gameOverCard.getGameOverCard();
-    }
 });
 
 strButton.addEventListener("click", () => {
+    if (playerHand.length === 0) {
+        vs.innerHTML = "You Lose!";
+        xmenPlayerCardContainer.innerHTML = gameOverCard.getGameOverCard();
+        return;
+    }
+    if (cpuHand.length === 0) {
+        vs.innerHTML = "You Win!";
+        xmenCpuCardContainer.innerHTML = gameOverCard.getGameOverCard();
+        return;
+    }
     if (playerHand[0].energyProjection > cpuHand[0]?.strength && cpuHand.length > 0) {
         playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
@@ -194,13 +210,19 @@ strButton.addEventListener("click", () => {
         xmenPlayerCardContainer.innerHTML = playerHand[0].getPlayerCard();
         xmenCpuCardContainer.innerHTML = cpuHand[0]?.getCpuCard();
     };
-    if (cpuHand.length === 0) {
-        vs.innerHTML = "You Win!";
-        xmenCpuCardContainer.innerHTML = gameOverCard.getGameOverCard();
-    }
 });
 
 spdButton.addEventListener("click", () => {
+    if (playerHand.length === 0) {
+        vs.innerHTML = "You Lose!";
+        xmenPlayerCardContainer.innerHTML = gameOverCard.getGameOverCard();
+        return;
+    }
+    if (cpuHand.length === 0) {
+        vs.innerHTML = "You Win!";
+        xmenCpuCardContainer.innerHTML = gameOverCard.getGameOverCard();
+        return;
+    }
     if (playerHand[0].energyProjection > cpuHand[0]?.speed && cpuHand.length > 0) {
         playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
@@ -221,6 +243,16 @@ spdButton.addEventListener("click", () => {
 });
 
 durButton.addEventListener("click", () => {
+    if (playerHand.length === 0) {
+        vs.innerHTML = "You Lose!";
+        xmenPlayerCardContainer.innerHTML = gameOverCard.getGameOverCard();
+        return;
+    }
+    if (cpuHand.length === 0) {
+        vs.innerHTML = "You Win!";
+        xmenCpuCardContainer.innerHTML = gameOverCard.getGameOverCard();
+        return;
+    }
     if (playerHand[0].energyProjection > cpuHand[0]?.durability && cpuHand.length > 0) {
         playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
@@ -241,6 +273,16 @@ durButton.addEventListener("click", () => {
 });
 
 enProButton.addEventListener("click", () => {
+    if (playerHand.length === 0) {
+        vs.innerHTML = "You Lose!";
+        xmenPlayerCardContainer.innerHTML = gameOverCard.getGameOverCard();
+        return;
+    }
+    if (cpuHand.length === 0) {
+        vs.innerHTML = "You Win!";
+        xmenCpuCardContainer.innerHTML = gameOverCard.getGameOverCard();
+        return;
+    }
     if (playerHand[0].energyProjection > cpuHand[0]?.energyProjection && cpuHand.length > 0) {
         playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
@@ -261,6 +303,12 @@ enProButton.addEventListener("click", () => {
 });
 
 fightSkillButton.addEventListener("click", () => {
+    if (playerHand.length === 0) {
+        vs.innerHTML = "You Lose!";
+        xmenPlayerCardContainer.innerHTML = gameOverCard.getGameOverCard();
+        return;
+    }
+    
     if (playerHand[0].fightingSkills > cpuHand[0]?.fightingSkills && cpuHand.length > 0) {
         playerHand.push(cpuHand.shift());
         playerScore.innerHTML = `Player Score: ${playerHand.length}`
