@@ -6,13 +6,13 @@
 }
 
 header {
-  background-color: #1D90F3;
-  color: #FFFE03;
+  background-color: #1d90f3;
+  color: #fffe03;
   height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 .game-board {
@@ -36,24 +36,27 @@ header {
 }
 
 .x-men-card {
-  background-color: #1D90F3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 20vw;
-  height: 70vh;
-  border: #0E1113 solid 5px;
+  background-color: #1d90f3;
+  height: 680px;
+  width: 500px;
+  border: #0e1113 solid 5px;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 20px;
 }
 .x-men-card__name {
-  color: #FFFE03;
-  margin-bottom: 10px;
+  color: #fffe03;
+  font-size: 50px;
 }
 .x-men-card__img {
-  height: 60%;
+  height: 70%;
   width: 80%;
-  border: #0E1113 solid 3px;
+  border: #0e1113 solid 3px;
   border-radius: 10px;
 }
 .x-men-card__quote {
@@ -63,19 +66,19 @@ header {
   text-align: center;
   padding: 10px;
   font-size: 15px;
-  background-color: #FFFE03;
-  color: #0E1113;
-  height: 25%;
+  background-color: #fffe03;
+  color: #0e1113;
+  height: 13%;
   width: 80%;
   margin-top: 5px;
-  border: #0E1113 solid 3px;
+  border: #0e1113 solid 3px;
   border-radius: 10px;
 }
 .x-men-card__button {
   height: 40px;
   width: auto;
-  background-color: #F94115;
-  border: #0E1113 solid 2px;
+  background-color: #f94115;
+  border: #0e1113 solid 2px;
   cursor: pointer;
   font-size: 12px;
 }
@@ -86,8 +89,8 @@ header {
   margin-top: 25px;
 }
 .button-container__button {
-  background-color: #F94115;
-  color: #0E1113;
+  background-color: #f94115;
+  color: #0e1113;
   height: 40px;
   margin: 10px;
   width: 80px;
@@ -95,16 +98,93 @@ header {
 }
 
 h3 {
-  background-color: #1D90F3;
-  color: #FFFE03;
-  border: #0E1113 solid 3px;
+  background-color: #1d90f3;
+  color: #fffe03;
+  border: #0e1113 solid 3px;
   padding: 10px;
   border-radius: 10px;
   font-size: 30px;
 }
 
 .versus {
-  background-color: #F94115;
-  color: #0E1113;
+  background-color: #f94115;
+  color: #0e1113;
   border-radius: 30px;
+}
+
+/* media query for phone view */
+@media only screen and (max-width: 767px) {
+  header {
+    font-size: 17px;
+    margin-bottom: 10px;
+    height: 50px;
+  }
+
+  .game-board {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .x-men-card {
+    width: 350px;
+    height: 240px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .x-men-card__name {
+    font-size: 25px;
+    writing-mode: vertical-lr;
+  }
+
+  .x-men-card__img {
+    height: 100%;
+    width: 40%;
+  }
+
+  .x-men-card__quote {
+    height: 80%;
+    width: 30%;
+  }
+
+  .button-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-left: 30px;
+  }
+
+  .button-container__button {
+    height: 40px;
+    width: 80px;
+  }
+}
+
+/* media query for laptop view */
+@media only screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+  header {
+    height: 15vh;
+  }
+
+  .x-men-card {
+    height: 410px;
+    width: 300px;
+    padding-top: 10px;
+  }
+  .x-men-card__name {
+    font-size: 35px;
+  }
+  .x-men-card__img {
+    height: 70%;
+    width: 80%;
+  }
+  .x-men-card__quote {
+    font-size: 12px;
+    height: 15%;
+    width: 80%;
+    padding: 10px;
+    margin-top: 5px;
+  }
 }
