@@ -117,9 +117,9 @@ const iceman = new Card("Iceman", "./images/iceman.png", "I've been a super hero
 
 const jeanGrey = new Card("Jean Grey", "./images/jean-grey.jpg", "Time spent alive, learning together is all that makes life worth living.", 3, 2, 3, 2, 6, 4);
 
-const toad = new Card("Toad", "./images/toad.webp", "I ain't the kind of toad that turns into a prince when some beautiful lady kisses him. I just stay a toad.", 3, 4, 3, 3, 1, 3);
+const toad = new Card("Toad", "./images/toad.webp", "I ain't the kind of toad that turns into a prince.", 3, 4, 3, 3, 1, 3);
 
-const psylocke = new Card("Psylocke", "./images/psylocke.webp", "That's right. Because pain goes away. Just like this hurt will. So just remember -- all pain is only temporary, okay? No hurt lasts forever.", 2, 6, 4, 6, 5, 4);
+const psylocke = new Card("Psylocke", "./images/psylocke.webp", "... all pain is only temporary, okay? No hurt lasts forever.", 2, 6, 4, 6, 5, 4);
 
 // -------------------------------------------GAME OVER CARD-------------------------------------------------
 
